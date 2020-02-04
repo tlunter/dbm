@@ -7,7 +7,7 @@ class DBM
     clear
     update(other)
   end
-  
+
   def update(other)
     other.each_pair { |k, v| self[k] = v }
     self

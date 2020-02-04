@@ -23,5 +23,8 @@ Gem::Specification.new do |s|
   s.files         = files
   s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.require_paths = ["lib"]
-  s.has_rdoc      = true
+
+  s.extensions = ['rakefile']
+
+  s.add_development_dependency 'rake'
 end

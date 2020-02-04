@@ -1,4 +1,7 @@
 *.class
+.classpath
+.project
+.settings
 *~
 # Package Files #
 *.jar
@@ -6,3 +9,6 @@
 *.ear
 /target/
 pkg/
+
+Gemfile.lock
+pom.xml
