@@ -1,5 +1,6 @@
-require 'mapdb.jar'
-require 'dbm.jar'
+require Dir[File.dirname(__FILE__) + '/*_jars.rb'].first
+require Dir[File.dirname(__FILE__) + '/*jar'].first
+
 org.jruby.ext.dbm.DBMLibrary.new.load(JRuby.runtime, false)
 
 class DBM

@@ -1,9 +1,20 @@
-require 'bundler'
-Bundler::GemHelper.install_tasks
+require 'jars/classpath'
+require 'rake/javaextensiontask'
 
-task :default => [:build_artifact]
+spec = eval File.read('dbm.gemspec')
 
-task :build_artifact do
-  system "mvn package"
-  cp "target/dbm.jar", "lib/."
+desc 'compile src/main/java/** into lib/dbm.jar'
+Rake::JavaExtensionTask.new('dbm', spec) do |ext|
+  ext.classpath = Jars::Classpath.new.classpath_string
+  ext.source_version = '1.7'
+  ext.target_version = '1.7'
+  ext.ext_dir = 'src/main/java'
+end
+
+task default: [:compile]
+
+require 'rubygems/package_task'
+Gem::PackageTask.new(spec) do
+  desc 'Pack gem'
+  task package: [:compile]
 end
