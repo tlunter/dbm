@@ -1,4 +1,4 @@
-require 'mapdb.jar'
+require 'dbm_jars'
 require 'dbm.jar'
 org.jruby.ext.dbm.DBMLibrary.new.load(JRuby.runtime, false)
 
